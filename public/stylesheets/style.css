@@ -2,7 +2,7 @@
   --primary: #ffbcf3;
   --secondary: #a32263;
   --tertiary: #7c7885;
-  --light-dark: #6f6f66;
+  --light-dark: #929292;
   --dark: #38302e;
   --border-radius: 0.3rem;
 }
@@ -23,7 +23,7 @@ html {
 
 a {
   text-decoration: none;
-  color: #a32263;
+  color: var(--secondary);
   font-weight: bold;
   transition: color 0.1s;
 }
@@ -163,6 +163,11 @@ main {
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
   border-radius: .3rem;
+  background-color: whitesmoke;
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 6px 5px var(--light-dark);
 }
 
 .post span {
@@ -173,7 +178,7 @@ main {
 }
 
 .title {
-  background-color: var(--tertiary);
+  background-color: var(--light-dark);
   padding: 2%;
   border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
