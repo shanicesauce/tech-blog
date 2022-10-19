@@ -69,11 +69,11 @@ router.post("/login", (req, res) => {
   //expects {username: 'name', password: 'password1}
   User.findOne({
     where: {
-      email: req.body.email,
+      username: req.body.username,
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "No user with that email address" });
+      res.status(400).json({ message: "No user with that username address" });
       return;
     }
     const validPassword = dbUserData.checkPassword(req.body.password);
@@ -91,6 +91,18 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+//logout
+router.post("/logout", withAuth, (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 //UDATE user
 router.put("/:id", withAuth, (req, res) => {
   User.update(req.body, {
