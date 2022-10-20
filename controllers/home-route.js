@@ -4,6 +4,7 @@ const { Post, User, Comment } = require("../models");
 
 router.get("/", (req, res) => {
   Post.findAll({
+    attributes: ["id", "post_text", "title", "created_at"],
     include: [
       {
         model: Comment,
@@ -23,7 +24,7 @@ router.get("/", (req, res) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       res.render("homepage", {
         posts,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {
@@ -40,8 +41,8 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get('/signup', (req, res) => {
-  res.render('signup');
+router.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
 router.get("/post/:id", (req, res) => {
@@ -49,12 +50,7 @@ router.get("/post/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "post_text",
-      "title",
-      "created_at",
-    ],
+    attributes: ["id", "post_text", "title", "created_at"],
     include: [
       {
         model: Comment,

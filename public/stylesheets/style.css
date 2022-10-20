@@ -115,8 +115,7 @@ main {
   text-decoration: none;
   padding: 6px 5px;
   width: 100%;
-  display: block;
-  margin: 5px 0;
+  display: flex;
   border-radius: 0.3rem;
   color: var(--secondary);
   border: none;
@@ -131,6 +130,20 @@ main {
   background-color: var(--tertiary);
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--dark);
+}
+
+.new-btn {
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: 6px 5px;
+  width: 100%;
+  border-radius: 0.3rem;
+  color: var(--secondary);
+  display:flex;
+  align-self:flex-end;
+  border: none;
+  outline: none;
+  background-color: var(--primary);
 }
 
 .btn-no-style {
@@ -195,8 +208,7 @@ main {
 
 .login-form,
 .signup-form,
-.new-post-form,
-.edit-post-form {
+.new-post-form {
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
   border-radius: 0.2rem;
